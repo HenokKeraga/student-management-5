@@ -1,0 +1,22 @@
+<h1>Student List </h1>
+
+<ul>
+    <!-- <li *ngFor="let student of (students$|async)!" (click)="selectedStudent=student">
+        {{student.name}}
+
+    </li> -->
+    <li *ngFor="let student of (students)!" (click)="selectedStudent=student">
+        {{student.name}}
+
+    </li>
+
+</ul>
+
+<app-student-detail *ngIf="selectedStudent; else noStudent" [id]="+selectedStudent.id"
+    (selected)="onSelected()"></app-student-detail>
+
+<ng-template #noStudent>
+    <p>No Student selected</p>
+</ng-template>
+
+<app-student-create (stAdd)="addOneStudent($event)"></app-student-create>
